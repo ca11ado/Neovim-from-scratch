@@ -84,17 +84,45 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Find files",
-  },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+
+	f = {
+		name = "Find",
+		f = {
+			"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+			"Find files",
+		},
+		b = {
+			"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+			"Find buffers",
+		},
+		t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+	},
+
+	n = {
+		name = "Navigation",
+		e = { "<cmd>NvimTreeOpen<cr>", "Open explorer" },
+		n = { "<cmd>NvimTreeFindFile<cr>", "Current file in explorer" },
+		q = { "<cmd>NvimTreeClose<cr>", "Close explorer" },
+		l = { "<cmd>vsplit<cr>", "Split vertical" },
+		t = { "<cmd>tabnew<cr>", "Open in new tab" },
+		o = {
+			"<cmd>lua require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+			"Old files",
+		},
+		c = {
+			"<cmd>lua require('telescope.builtin').commands(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+			"Commands",
+		},
+		d = {
+			"<cmd>lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+			"LSP diagnostics",
+		},
+	},
 
   p = {
     name = "Packer",
@@ -107,7 +135,8 @@ local mappings = {
 
   g = {
     name = "Git",
-    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+    -- g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		g = { "<cmd>Git<CR>", "Fugitive status" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -121,7 +150,8 @@ local mappings = {
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    -- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		c = { "<cmd>Git commit<cr>", "Checkout commit" },
     d = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
@@ -143,11 +173,11 @@ local mappings = {
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+      "<cmd>lua vim.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
     },
     k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+      "<cmd>lua vim.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
