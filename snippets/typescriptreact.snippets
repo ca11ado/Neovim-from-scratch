@@ -1,0 +1,48 @@
+snippet testd "jest describe block"
+	describe('${1}', () => {
+		test('${2}', () => {
+			expect(true).toBe(false);
+		});
+	});
+
+snippet testt "jest test block"
+	test('${1}', () => {
+		expect(true).toBe(false);
+	});
+
+snippet teste "jest test each block"
+	test.each([
+		${1}
+	])(
+		'given %o should return %o',
+		() => {
+			expect().toBe();
+		},
+	);
+
+snippet ccc "console.log"
+	console.log('%c #custom-log', 'color:red;', '${1}', ${1});
+
+snippet tbreactcomponent "Tabby React Component" b
+	import React from 'react';
+	import clsx from 'clsx';
+	import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+
+	const useStyles = makeStyles((theme: Theme) =>
+		createStyles({
+			root: {
+				color: theme.palette.background.paper,
+			},
+		})
+	);
+
+	interface Props {
+		className?: string;
+	}
+
+	export default function ${1}({ className }: Props) {
+		const classes = useStyles();
+
+		return <div className={clsx(className, classes.root)}></div>;
+	}
+
