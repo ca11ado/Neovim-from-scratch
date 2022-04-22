@@ -86,7 +86,13 @@ local mappings = {
 	},
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
-	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+	c = {
+		name = "Quickfix list",
+		n = { "<cmd>cnext<cr>", "Next item in quickfix list" },
+		p = { "<cmd>cprev<cr>", "Previous item in quickfix list" },
+		o = { "<cmd>copen<cr>", "Open quickfix list" },
+		c = { "<cmd>cclose<cr>", "Close quickfix list" },
+	},
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
