@@ -43,8 +43,8 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Command mode --
 -- Ctrl-N and Ctrl-P
-keymap("c", "<C-p>", "<Up>", opts)
-keymap("c", "<C-n>", "<Down>", opts)
+keymap("c", "<C-p>", "<Up>", { noremap = true })
+keymap("c", "<C-n>", "<Down>", { noremap = true })
 
 -- Insert --
 -- Press jk fast to enter
@@ -73,4 +73,3 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
